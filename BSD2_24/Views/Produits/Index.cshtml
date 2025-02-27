@@ -2,14 +2,15 @@
 
 @{
     ViewData["Title"] = "Index";
-    string recherche = ViewData["recherche"] as string;
+    var recherche = ViewData["recherche"] as string;
 }
 
 <h1>Index</h1>
 
-<form asp-controller="Produits" asp-action="Index">
+
+<form asp-controller="Produits" asp-action="Index" method="get">
     <p>
-        <input type="text" name="recherche" placeholder="Ex: Nom du produit" value="@recherche"/>
+        <input type="text" name="recherche" placeholder="Ex : Nom du produit" value="@recherche" />
         <input class="btn btn-primary" type="submit" value="Rechercher" />
     </p>
 </form>
