@@ -25,8 +25,6 @@ if (!app.Environment.IsDevelopment())
 }
 app.UseStaticFiles();
 
-app.UseRequestLocalization("fr-FR");
-
 app.UseRouting();
 
 app.UseAuthorization();
