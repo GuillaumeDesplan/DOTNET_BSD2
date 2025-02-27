@@ -20,9 +20,21 @@ namespace BSD2_24.Controllers
         }
 
         // GET: Produits
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string recherche)
         {
-            return View(await _context.Produit.ToListAsync());
+
+            var produits = from p in _context.Produit
+                           select p;
+
+            if (!String.IsNullOrEmpty(recherche))
+            {
+                produits = produits.Where(p => p.Nom!.ToUpper().Contains(recherche.ToUpper()));
+            }
+
+            ViewData["recherche"] = recherche;
+
+
+            return View(await produits.ToListAsync());
         }
 
         // GET: Produits/Details/5
